@@ -3,17 +3,18 @@ run-name: Creating Pull Request
 on:
     push:
         branches:
-            - 'feature/*'
-
-permissions:
-    contents: write
-    pull-requests: write
+            - 'feature/**'
 
 jobs:
-    create:
-        runs-on: ubuntu-latest
+    Pull-Request:
+        runs-on: ubuntu-22.04
         steps:
-            - uses: actions/checkout@v6
-            - uses: peter-evans/create-pull-request@v7
+            - name: 'Checkout'
+              uses: actions/checkout@v4
               with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
+                  fetch-depth: 0
+
+            - name: 'Pull Request'
+              uses: peter-evans/create-pull-request@v8
+              with:
+                  base: main
