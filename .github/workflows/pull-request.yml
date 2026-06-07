@@ -17,4 +17,4 @@ jobs:
             - name: 'Pull Request'
               uses: peter-evans/create-pull-request@v8
               with:
-                  base: main
+                  branch: main
