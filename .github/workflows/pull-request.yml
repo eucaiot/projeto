@@ -1,0 +1,19 @@
+name: Pull Request
+run-name: Creating Pull Request
+on:
+    push:
+        branches:
+            - 'feature/*'
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    create:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: peter-evans/create-pull-request@v7
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
